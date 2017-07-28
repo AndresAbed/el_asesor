@@ -1,0 +1,27 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  username: postgres
+  password: <%= ENV["db_password"] %>
+
+development:
+  <<: *default
+  database: el_asesor_dev
+
+test:
+  <<: *default
+  database: el_asesor_test
+
+staging:
+  <<: *default
+  database: el_asesor_staging
+  port: 5432
+  host: <%= ENV["host"] %>
+
+production:
+  <<: *default
+  database: el_asesor_production
+  port: 5432
+  host: <%= ENV["host"] %>
